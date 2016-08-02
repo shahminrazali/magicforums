@@ -1,0 +1,134 @@
+
+
+.background {
+  height: calc(100vh - 52px);
+  background-image: asset-url("sky.jpeg");
+  width: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+}
+
+.background-2{
+  background-color: grey;
+  height: 50vh;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: white;
+}
+
+.features{
+  display: flex;
+  flex-wrap: wrap;
+  // max-width: 1200px;
+  margin:  auto;
+  justify-content:space-around;
+}
+
+.features-container{
+    background-color: maroon;
+}
+
+.feature{
+  flex: 0 0 300px;
+  margin: 20px 0;
+    color: white;
+}
+
+.features-title{
+  margin: 0 0;
+  padding-top: 20px;
+  color: white;
+  justify-content: center;
+}
+
+
+.photo-container{
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+  margin: auto;
+  // max-width:1200px;
+}
+
+.photo-box{
+  flex: 0 0 25%;
+  position: relative;
+    background-color: black;
+}
+
+.img-settings {
+  width: 100%;
+  height: 180px;
+}
+
+.photo-box:hover .invisible-layout {
+  opacity: 1;
+  transition: all 0.4s ease-in-out;
+}
+
+.invisible-layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.sexybox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: grey;
+  color: pink;
+  opacity: 0.5;
+}
+
+@media all and (max-width: 1199px){
+  .features {
+    max-width: 600px;
+  }
+  .photo-container{
+    max-width: 600px;
+  }
+  .photo-box{
+      flex: 0 0 50%;
+  }
+}
+
+.short-underline {
+  width: 250px;
+  border-bottom: 2px solid white;
+}
+
+.contact-info{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height: 100%;
+  background-color: grey;
+}
+
+.contact-flex{
+  display: flex;
+  justify-content: space-around;;
+  align-items:baseline;
+  flex-wrap: wrap;
+
+}
+
+.column-4 {
+  flex: 0 0 25%;
+  color: white;
+}

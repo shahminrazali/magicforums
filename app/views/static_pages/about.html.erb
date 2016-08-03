@@ -17,14 +17,19 @@
 </div>
 
 <div class="line-parent text-center">
-  <div class="line-child">
-    <%= link_to fa_icon("facebook 3x"), "http://www.facebook.com/", :target => "_blank" %>
-  </div>
+
+    <%= link_to "http://facebook.com/shahminrazali" do %>
+      <div class="line-child">
+        <%=  fa_icon("facebook 3x") %>
+        <h7>Something</h7>
+      </div>
+    <% end %>
+
   <div class ="line-child">
-    <%= link_to fa_icon("instagram 3x"), "http://www.instagram.com", :target =>"_blank" %>
+    <%= link_to fa_icon("instagram 3x"), "http://www.instagram.com", target: "_blank" %>
   </div>
   <div class="line-child">
-    <%= link_to fa_icon("globe 3x"), "http://www.google.com", :target => "_blank" %>
+    <%= link_to fa_icon("globe 3x"), "http://www.google.com", target: "_blank" %>
   </div>
 </div>
 

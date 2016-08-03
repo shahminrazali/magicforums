@@ -32,10 +32,10 @@
     display:flex;
     background-color: white;
     height: 30vh;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
   }
   .line-child{
-    flex: 0 0 200px;
+    flex: 1 0;
   }
 }

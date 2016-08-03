@@ -1,0 +1,41 @@
+.about-page {
+  .background {
+    height: calc(100vh - 52px);
+    background-image: url("beach.jpg");
+    width: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:flex;
+    align-items:flex-start;
+    justify-content:flex-end;
+
+  }
+  .color {
+    margin-right: 10%;
+    margin-top: 6%;
+    padding: 2%;
+    color: white;
+    // text-shadow: 1px 1px black;
+    // border-style: solid;
+  }
+  .colorbg{
+    background-color: black;
+    opacity:0.6;
+  }
+
+  .title{
+    text-align: right;
+  }
+
+  .line-parent{
+    display:flex;
+    background-color: white;
+    height: 30vh;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .line-child{
+    flex: 0 0 200px;
+  }
+}

@@ -31,11 +31,12 @@
   .line-parent{
     display:flex;
     background-color: white;
-    height: 30vh;
-    justify-content: center;
+    height: 20vh;
+    justify-content: space-between;
     align-items: center;
   }
   .line-child{
-    flex: 1 0;
+    flex: 0 0 20px;
+    margin: auto;
   }
 }

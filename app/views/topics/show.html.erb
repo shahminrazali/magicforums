@@ -1,0 +1,13 @@
+<h1><%= @topic.title %></h1>
+<p><%= @topic.description %></p>
+
+
+<%= link_to "EDIT", edit_topic_path, class: "btn btn-success btn-lg" %>
+
+<%= link_to "DELETE", topic_path , class: "btn btn-success btn-lg" , method: :delete, data: {confirm: "Delete?"} %>
+<!-- <%= form_for(@topic, url: edit_topic_path(@topic), html: { id: "topic_edit"}) do |f| %>
+
+<div class="form-group text-center">
+  <%= f.submit "Edit", class: "btn btn-success btn-lg" %>
+</div> -->
+<% end %>

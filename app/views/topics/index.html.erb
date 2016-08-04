@@ -1,16 +1,19 @@
 <div class="topics">
 
 <div class="background">
-<h1>Topics</h1>
+  <h1>Topics</h1>
 </div>
 
+<div class="button-bar">
+  <%= link_to "Create New Topic", new_topic_path , class: "btn btn-success btn-lg"%>
+</div>
+
+
 <div class="topic-parent text-center">
-<% @topics.each do |topic| %>
-    <%= link_to topic_path(topic) do %>
-        <div class="topic-child">
-            <h3><%= topic.title %></h3>
-            <h5><%= topic.description %></h5>
-        </div>
+  <% @topics.each do |topic| %>
+      <%= link_to topic_path(topic), class: "topic-child text-center" do %>
+          <h4><%= topic.title %></h4>
+          <h5><%= topic.description %></h5>
       <% end %>
   <% end %>
 </div>

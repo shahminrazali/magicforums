@@ -16,22 +16,18 @@
   </div>
 </div>
 
-<div class="line-parent text-center">
-
-    <%= link_to "http://facebook.com/shahminrazali" do %>
-      <div class="line-child">
-        <%=  fa_icon("facebook 3x") %>
-        <h7>Something</h7>
-      </div>
+  <div class="line-parent text-center">
+    <%= link_to "http://facebook.com/shahminrazali", class: "line-child text-center" do %>
+        <%=  fa_icon("facebook 1x") %><br>
+        <h7>Facebook</h7>
     <% end %>
-
-  <div class ="line-child">
-    <%= link_to fa_icon("instagram 3x"), "http://www.instagram.com", target: "_blank" %>
+    <%= link_to "http://www.instagram.com",class:"line-child", target: "_blank" do %>
+        <%=fa_icon("instagram 1x")%><br>
+        <h7>Instagram</h7>
+    <%end%>
+    <%= link_to "http://www.google.com",class:"line-child", target: "_blank" do %>
+        <%=fa_icon("globe 1x")%><br>
+        <h7>Website</h7>
+    <%end%>
   </div>
-  <div class="line-child">
-    <%= link_to fa_icon("globe 3x"), "http://www.google.com", target: "_blank" %>
-  </div>
-</div>
-
-
 </div>

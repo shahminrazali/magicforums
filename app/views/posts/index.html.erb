@@ -1,0 +1,14 @@
+<div class="posts-page">
+<div class="button-bar">
+  <% link_to "NEW POST", new_post_path, class:"btn btn-lg btn-success" %>
+</div>
+  <div class="posts">
+    <h1>Posts</h1>
+    <% @posts.each do |post| %>
+      <%= link_to post_path(post), class:"topic-child text-center" do %>
+      <h5> <%= post.title %></h5>
+      <h6> <%= post.body %> </h6>
+      <%end%>
+      <%end%>
+  </div>
+</div>

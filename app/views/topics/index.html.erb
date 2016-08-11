@@ -5,16 +5,21 @@
 </div>
 
 <div class="button-bar">
-  <%= link_to "Create New Topic", new_topic_path , class: "btn btn-success btn-lg"%>
+  <%= link_to "Create New Topic", new_topic_path , class: "button-set"%>
 </div>
 
 
 <div class="topic-parent text-center">
   <% @topics.each do |topic| %>
-      <%= link_to topic_path(topic), class: "topic-child text-center" do %>
+      <%= link_to topic_posts_path(topic), class: "topic-child text-center" do %>
           <h4><%= topic.title %></h4>
           <h5><%= topic.description %></h5>
-      <% end %>
+          <% end %>
+    <div class="box">
+      <%= link_to fa_icon("pencil-square-o 1x"), edit_topic_path(topic) %>
+      <%= link_to fa_icon("trash-o 1x"), topic_path(topic), method: :delete, data: {confirm: "Delete?"} %>
+    </div>
+
   <% end %>
 </div>
 

@@ -1,53 +1,67 @@
 class PostsController < ApplicationController
+  before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
 
   def index
-    @posts = Post.all
+    @topic = Topic.includes(:posts).find_by(id: params[:topic_id])
+    @posts = @topic.posts.order("created_at DESC")
+
   end
 
-  def show
-   @post = Post.find_by(id: params[:id])
-  end
+  # def show
+  #  @post = Post.find_by(id: params[:id])
+  # end
 
   def new
+    @topic = Topic.find_by(id: params[:topic_id])
     @post = Post.new
   end
 
   def create
-    @post = Post.new post_params
+    # @topic = current_user.topics.build(topic_params)
+    @topic = Topic.find_by(id: params[:topic_id])
+    @post = current_user.posts.build(post_params.merge(topic_id: params[:topic_id]))
       if @post.save
-        redirect_to posts_path
+        flash[:success] = "You've created a new post."
+        redirect_to topic_posts_path(@topic)
       else
-        render new_posts_path
+        flash[:danger] = @post.errors.full_messages
+        redirect_to new_topic_post_path(@topic)
       end
   end
 
   def update
+    @topic = Topic.find_by(id: params[:topic_id])
     @post = Post.find_by(id: params[:id])
 
     if @post.update(post_params)
-      redirect_to post_path(@post)
+      flash[:success] = "You've updated a post."
+      redirect_to topic_posts_path(@topic)
     else
-      render edit_post_path(@post)
+      flash[:danger] = @post.errors.full_messages
+      redirect_to edit_topic_post_path(@topic, @post)
     end
 
   end
 
   def edit
     @post = Post.find_by(id: params[:id])
+    @topic = @post.topic
   end
 
   def destroy
     @post = Post.find_by(id: params[:id])
-    binding.pry
+    @topic = @post.topic
     if @post.destroy
-      redirect_to posts_path
+      flash[:success] = "Post deleted!"
+      redirect_to topic_posts_path(@topic)
     else
-      redirect_to post_path(@post)
+      flash[:danger] = @post.errors.full_messages
+      redirect_to topic_posts_path(@topic)
     end
   end
 
   private
     def post_params
-        params.require(:post).permit(:title, :body, :topic_id)
+        params.require(:post).permit(:title, :body, :image)
     end
 end

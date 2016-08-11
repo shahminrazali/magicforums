@@ -1,0 +1,45 @@
+.posts {
+
+  .button-set{
+    background-color: teal;
+    padding: 12px;
+    color:white;
+  }
+  .button-bar{
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: 20px;
+    margin-right: 20px;
+  }
+  .background{
+    background-image: asset-url("sky.jpeg");
+    background-size: cover;
+    height: 20vh;
+    color: white;
+    align-items: center;
+    padding: 20px;
+    justify-content: center;
+  }
+
+  // .topic-parent {
+  //   display: flex;
+  //   flex-wrap:wrap;
+  //   justify-content:space-around;
+  //
+  //
+  // }
+  //
+  // .topic-child{
+  //   flex: 1 0 ;
+  //   // width: 200px;
+  //   margin: 10px;
+  //   padding: 20px;
+  //   border-style: solid;
+  //   border-width: 1.2px;
+  //   border-color: teal;
+  //   border-radius: 50px;
+  //   align-items:center;
+  //   color: teal;
+  // }
+}

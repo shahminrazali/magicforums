@@ -28,6 +28,15 @@ gem 'jbuilder', '~> 2.5'
  gem 'bcrypt', '~> 3.1.7'
  gem 'bootstrap-sass'
 
+gem 'responders'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'pundit'
+gem 'figaro'
+
+group :development do
+  gem 'letter_opener'
+end
 
 group :production do
   gem 'rails_12factor'

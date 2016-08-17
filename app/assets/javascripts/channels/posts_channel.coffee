@@ -10,18 +10,18 @@ postsChannelFunctions = () ->
     $(".comment[data-id=#{comment_id}]").removeClass("hidden")
 
   createComment = (data) ->
-    console.log("CREATE COMMENT");
+    console.log("CREATE COMMENT")
     if $('.comments.index').data().id == data.post.id && $(".comment[data-id=#{data.comment.id}]").length < 1
       $('#comments').append(data.partial)
       checkMe(data.comment.id, data.username)
 
   updateComment = (data) ->
-    console.log("update COMMENT");
+    $(".comment[data-id=#{data.comment.id}]").replaceWith(data.partial)
+    checkMe(data.comment.id, data.username)
 
 
   destroyComment = (data) ->
-    console.log("destroy COMMENT");
-
+    $(".comment[data-id=#{data.comment.id}]").remove()
 
   if $('.comments.index').length > 0
     App.posts_channel = App.cable.subscriptions.create {
@@ -29,18 +29,15 @@ postsChannelFunctions = () ->
     },
 
     connected: () ->
-      console.log("user logged in");
+      console.log("user logged in")
 
     disconnected: () ->
-      console.log("user logged out");
+      console.log("user logged out")
 
     received: (data) ->
-      console.log("in 2")
       switch data.type
         when "create" then createComment(data)
         when "update" then updateComment(data)
         when "destroy" then destroyComment(data)
-
-
 
 $(document).on 'turbolinks:load', postsChannelFunctions

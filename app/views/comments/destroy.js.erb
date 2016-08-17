@@ -1,4 +1,1 @@
 $('#flash-messages-container').html("<%=j render partial: 'partials/flash_messages' %>")
-<% if @comment.destroyed? %>
-  $('.comment[data-id="<%= @comment.id %>"]').remove()
-<%end%>

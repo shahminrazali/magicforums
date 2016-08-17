@@ -46,10 +46,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
 
     if @comment.update(comment_params)
+      CommentBroadcastJob.perform_now("update", @comment)
       flash.now[:success] = "You've updated a comment!"
       # redirect_to topic_post_comments_path(@topic, @post)
     else
-
       flash.now[:danger] = @comment.errors.full_messages
       # redirect_to edit_topic_post_comment_path(@topic, @post)
     end
@@ -62,6 +62,7 @@ class CommentsController < ApplicationController
     authorize @comment
 
     if @comment.destroy
+      CommentBroadcastJob.perform_now("destroy", @comment)
       flash.now[:success] = "You've deleted a comment!"
       # redirect_to topic_post_comments_path(@topic,@post)
     else

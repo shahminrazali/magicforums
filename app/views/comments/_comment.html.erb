@@ -4,10 +4,10 @@
 
     <div class="box">
       <%= comment.id %>
-      comment.user: <%= comment.user.id %>|
+      <!-- comment.user: <%= comment.user.id %>|
       current_user: <%= current_user.id %>|
       current_user.admin?: <%= current_user&.admin? %>|
-      current_user$.moderator?: <%=current_user&.moderator?%>|
+      current_user$.moderator?: <%=current_user&.moderator?%>| -->
       <% if comment.user.id == current_user.id %>
       <%= link_to fa_icon("pencil 1x"), edit_topic_post_comment_path(post.topic, post, comment), remote: true%>
       <%end%>

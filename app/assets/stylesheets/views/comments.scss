@@ -1,0 +1,29 @@
+.button-set{
+  background-color: teal;
+  padding: 12px;
+  color:white;
+}
+
+.comment {
+  margin: 10px;
+  border-style: solid;
+  border-width: 1;
+  border-color: teal;
+}
+
+.button-bar{
+  display:flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin: 20px;
+  margin-right: 20px;
+}
+.background{
+  background-image: asset-url("sky.jpeg");
+  background-size: cover;
+  height: 20vh;
+  color: white;
+  align-items: center;
+  padding: 20px;
+  justify-content: center;
+}

@@ -1,0 +1,27 @@
+<div class="comment" data-id="<%=comment.id%>">
+
+    <h6><%= comment.body %></h6>
+
+    <div class="box">
+      <%= comment.id %>
+      comment.user: <%= comment.user.id %>|
+      current_user: <%= current_user.id %>|
+      current_user.admin?: <%= current_user&.admin? %>|
+      current_user$.moderator?: <%=current_user&.moderator?%>|
+      <% if comment.user.id == current_user.id %>
+      <%= link_to fa_icon("pencil 1x"), edit_topic_post_comment_path(post.topic, post, comment), remote: true%>
+      <%end%>
+      <% if comment.user == current_user || current_user&.admin? || current_user&.moderator? %>
+      <%= link_to fa_icon("trash-o 1x"), topic_post_comment_path(post.topic, post, comment), method: :delete, remote: true, data: {confirm: "Delete?"} %>
+      <%end%>
+    </div>
+
+    <p class="date"> Posted: <%= comment.created_at %> </p>
+    <% user_image = comment.user.image.thumb.url || "" %>
+    <p>
+      <span class="poster-image"> <%= image_tag user_image %> </span>
+      <span class="poster"> <%= comment.user.username %> </span>
+    </p>
+
+
+</div>

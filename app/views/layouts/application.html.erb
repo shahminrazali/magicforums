@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magicforums</title>
-    <%= csrf_meta_tags %>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magicforums</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <body>
-    <div id="header">
-      <%= render partial: 'partials/header' %>
-    </div>
-    <%= render partial: 'partials/flash_messages' %>
-    <%= yield %>
-  </body>
+  <% if current_user && (current_user.admin? || current_user.moderator?) %>
+  <meta name="admin">
+  <% end %>
+  <% if current_user.username.length > 1 %>
+  <meta user="<%=current_user.username%>">
+  <%end%>  
+
+</head>
+
+<body>
+  <div id="header">
+    <%= render partial: 'partials/header' %>
+  </div>
+  <%= render partial: 'partials/flash_messages' %>
+  <%= yield %>
+</body>
 </html>

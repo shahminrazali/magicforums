@@ -28,11 +28,13 @@ gem 'jbuilder', '~> 2.5'
  gem 'bcrypt', '~> 3.1.7'
  gem 'bootstrap-sass'
 
+gem 'redis'
 gem 'responders'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'pundit'
 gem 'figaro'
+gem 'kaminari'
 
 group :development do
   gem 'letter_opener'

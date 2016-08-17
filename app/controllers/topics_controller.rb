@@ -1,7 +1,10 @@
 class TopicsController < ApplicationController
-      before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
+  respond_to :js
+  before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
+
   def index
-    @topics = Topic.all
+    @topic = Topic.new
+    @topics = Topic.order(:created_at).page params[:page]
   end
 
   # def show
@@ -9,20 +12,22 @@ class TopicsController < ApplicationController
   #   # binding.pry
   # end
 
-  def new
-    @topic = Topic.new
-    authorize @topic
-  end
+  # def new
+  #   @topic = Topic.new
+  #   authorize @topic
+  # end
 
   def create
     @topic = current_user.topics.build(topic_params)
     authorize @topic
+    @new_topic = Topic.new
+
     if @topic.save
-      flash[:success] = "You've created a new topic."
-      redirect_to topics_path
+      flash.now[:success] = "You've created a new topic."
+      # redirect_to topics_path
     else
-      flash[:danger] = @topic.errors.full_messages
-      render new_topic_path
+      flash.now[:danger] = @topic.errors.full_messages
+      # render new_topic_path
     end
   end
 
@@ -36,24 +41,34 @@ class TopicsController < ApplicationController
     authorize @topic
 
     if @topic.update(topic_params)
-      flash[:success] = "You've updated this topic."
-      redirect_to topics_path(@topic)
+      flash.now[:success] = "You've updated this topic."
+      # redirect_to topics_path(@topic)
     else
-      flash[:danger] = @topic.errors.full_messages
-      redirect_to edit_topic_path(@topic)
+      flash.now[:danger] = @topic.errors.full_messages
+      # redirect_to edit_topic_path(@topic)
     end
   end
 
   def destroy
     @topic = Topic.find_by(id: params[:id])
     authorize @topic
+    # @posts = @topic.posts
+    #
+    # @posts.each do |post|
+    #   post.destroy
+    #   comments = post.comments
+    #
+    #   comments.each do |comment|
+    #     comment.destroy
+    #   end
+    # end
 
     if @topic.destroy
-      flash[:success] = "You've deleted" + @topic_params.to_s
-      redirect_to topics_path
+      flash.now[:success] = "You've deleted" + @topic_params.to_s
+      # redirect_to topics_path
     else
-      flash[:danger] = @topic.errors.full_messages
-      redirect_to topic_path(@topic)
+      flash.now[:danger] = @topic.errors.full_messages
+      # redirect_to topic_path(@topic)
     end
   end
 

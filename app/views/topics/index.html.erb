@@ -1,26 +1,22 @@
 <div class="topics">
 
-<div class="background">
-  <h1>Topics</h1>
-</div>
-
-<div class="button-bar">
-  <%= link_to "Create New Topic", new_topic_path , class: "button-set"%>
-</div>
+  <div class="background">
+    <h1>Topics</h1>
+  </div>
 
 
-<div class="topic-parent text-center">
-  <% @topics.each do |topic| %>
-      <%= link_to topic_posts_path(topic), class: "topic-child text-center" do %>
-          <h4><%= topic.title %></h4>
-          <h5><%= topic.description %></h5>
-          <% end %>
-    <div class="box">
-      <%= link_to fa_icon("pencil-square-o 1x"), edit_topic_path(topic) %>
-      <%= link_to fa_icon("trash-o 1x"), topic_path(topic), method: :delete, data: {confirm: "Delete?"} %>
-    </div>
+  <nav>
+  <%=paginate @topics %>
+  </nav>
+  <div id="topic-show-container" class="topic-parent text-center">
+    <% @topics.each do |topic| %>
+    <%= render partial: "topic", locals: {topic: topic} %>
+    <%end%>
+  </div>
 
-  <% end %>
-</div>
 
+
+  <div id="topic-form-container">
+    <%= render partial: "form", locals: {topic: @topic} %>
+  </div>
 </div>

@@ -5,20 +5,15 @@
     <h4><%= @topic[:description] %></h4>
   </div>
 
-  <div class="posts button-bar">
-    <%= link_to "NEW POST", new_topic_post_path(@topic), class:"button-set" %>
+  <div id="posts">
+    <% @posts.each do |post| %>
+    <%= render partial: "post",locals: { post: post, topic: @topic } %>
+    <% end %>
   </div>
 
-  <div class="posts">
-    <% @posts.each do |post| %>
-      <%= link_to topic_post_comments_path(post.topic, post), class:"topic-child text-center" do %>
-      <h5> <%= post.title %></h5>
-      <h6> <%= post.body %> </h6>
-      <% if post.image? %>
-        <%= image_tag post.image, class: "img-settings img-responsive center-block" %>
-      <% end %>
-      <%end%>
-      <%end%>
+  <div id="posts-form-container">
+    <%= render partial: "form",  locals: { post: @post, topic: @topic } %>
   </div>
+
 
 </div>

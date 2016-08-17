@@ -13,30 +13,59 @@
 
     <div class="collapse navbar-collapse" id="header-dropdown">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Topics", topics_path %></li>
         <li><%= link_to "About", about_path %></li>
-        <% if current_user %>
-        <li>
-          <%= link_to current_user.username, edit_user_path(current_user), class: 'white shadowed link-styling' %>
-        </li>
+        <li><%= link_to "Discuss", topics_path %></li>
 
-        <li>
-          <%= link_to "Logout", session_path(current_user), method: :delete, class: 'white shadowed link-styling' %>
+        <% if current_user %>
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+             <%=current_user.username %> <%= fa_icon("user 1x") %>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to "Edit profile", edit_user_path(current_user), class: 'white shadowed link-styling' %>
+            </li>
+
+            <li>
+              <%= link_to "Logout", session_path(current_user), method: :delete, class: 'white shadowed link-styling' %>
+            </li>
+          </ul>
         </li>
 
       <% else %>
+      <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+           Login
+        </a>
+        <ul class="dropdown-menu login">
+          <li>
+            <div id="login-form-container">
+              <%= render partial: "partials/login" %>
+            </div>
+          </li>
 
-        <li>
-          <%= link_to "Register", new_user_path, class: 'white shadowed link-styling' %>
-        </li>
+          <li>
+            <%= link_to "Forgot Password", new_password_reset_path, class: 'white shadowed link-styling' %>
+          </li>
+
+          <li>
+            <%= link_to "Register", new_user_path, class: 'white shadowed link-styling' %>
+          </li>
+        </ul>
+      </li>
+<!--
 
         <li>
           <%= link_to "Login", new_session_path, class: 'white shadowed link-styling' %>
-        </li>
+        </li> -->
+
+
       <% end %>
 
       </ul>
     </div>
+
+
   </div>
 </nav>
 </div>

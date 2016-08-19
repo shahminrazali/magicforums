@@ -11,9 +11,9 @@
   <% if current_user && (current_user.admin? || current_user.moderator?) %>
   <meta name="admin">
   <% end %>
-  <% if current_user.username.length > 1 %>
+  <% if current_user %>
   <meta user="<%=current_user.username%>">
-  <%end%>  
+  <%end%>
 
 </head>
 

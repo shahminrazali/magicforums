@@ -19,7 +19,6 @@ postsChannelFunctions = () ->
     $(".comment[data-id=#{data.comment.id}]").replaceWith(data.partial)
     checkMe(data.comment.id, data.username)
 
-
   destroyComment = (data) ->
     $(".comment[data-id=#{data.comment.id}]").remove()
 
@@ -39,5 +38,7 @@ postsChannelFunctions = () ->
         when "create" then createComment(data)
         when "update" then updateComment(data)
         when "destroy" then destroyComment(data)
+
+      console.log("user logged out")
 
 $(document).on 'turbolinks:load', postsChannelFunctions

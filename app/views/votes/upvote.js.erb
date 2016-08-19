@@ -1,0 +1,2 @@
+$('#flash-messages-container').html("<%=j render partial: 'partials/flash_messages' %>")
+  $('.votes[data-id="<%=@vote.comment.id%>" #vote_up]').replaceWith('<%= link_to fa_icon("thumbs-up 2x")%>')

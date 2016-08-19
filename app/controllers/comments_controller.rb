@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
   # def new
   #   @topic = Topic.find_by(id: params[:topic_id])
-  #   @post = Post.find_by(id: params[:post_id])
+#   @post = Post.find_by(id: params[:post_id])
   #   @comment = Comment.new
   # end
 
@@ -71,9 +71,9 @@ class CommentsController < ApplicationController
     end
   end
 
-private
-  def comment_params
-    params.require(:comment).permit(:body, :image)
-  end
+    private
+      def comment_params
+        params.require(:comment).permit(:body, :image)
+      end
 
 end

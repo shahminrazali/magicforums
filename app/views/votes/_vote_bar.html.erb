@@ -1,0 +1,11 @@
+<!-- <%= comment.count_votes %>
+<%=comment.total_upvotes/comment.count_votes.to_f unless comment.count_votes == 0 %>
+<%=comment.total_downvotes/comment.count_votes.to_f unless comment.count_votes == 0 %> -->
+  <div class="progress" style="width: 300px; height:8px">
+    <div class="progress-bar progress-bar-success" style="width: <%=(comment.total_upvotes/comment.count_votes.to_f).abs * 100 unless comment.count_votes == 0 %>%">
+      <span class="sr-only">Thumbs Up</span>
+    </div>
+    <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <%=(comment.total_downvotes/comment.count_votes.to_f).abs * 100 unless comment.count_votes == 0 %>%">
+      <span class="sr-only">Thumbs Down</span>
+    </div>
+  </div>

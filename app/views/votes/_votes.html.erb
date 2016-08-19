@@ -1,0 +1,21 @@
+<div class="votes"  data-id="<%=comment.id%>" >
+  <div class="vote-bar" data-id="<%=comment.id%>">
+    <%= render partial: "votes/vote_bar", locals: {comment:comment} %>
+  </div>
+
+  <span class="vote" data-id="<%=comment.id%>">
+    <%=comment.total_votes%>
+  </span>
+  <span class="upvote" data-id="<%=comment.id%>">
+    <%=comment.total_upvotes%>|
+  </span>
+  <span class="downvote" data-id="<%=comment.id%>">
+    <%=comment.total_downvotes%>
+  </span>
+  <span id="vote_up">
+    <%= link_to fa_icon("thumbs-o-up 2x"), upvote_path(comment_id: comment.id), method: :post, remote: true%>
+  </span>
+  <span id="vote_down">
+    <%= link_to fa_icon("thumbs-o-down 2x"), downvote_path(comment_id: comment.id),method: :post, remote: true %>
+  </span>
+</div>

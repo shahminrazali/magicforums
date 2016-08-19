@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-
-
   root to: 'landing#index'
   get :about , to:'static_pages#about'
+
 
   resources :topics, except: [:show] do
     resources :posts, except: [:show] do
@@ -14,8 +13,10 @@ Rails.application.routes.draw do
 
   resources :password_resets, only: [:new, :create, :edit, :update]
 
-    mount ActionCable.server => '/cable'
+  mount ActionCable.server => '/cable'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  post :upvote, to: 'votes#upvote'
+  post :downvote, to: 'votes#downvote'
 
 end
